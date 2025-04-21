@@ -1,0 +1,24 @@
+'''Auto-generated Python stub for Pliant integration: {{.Def.Name}}'''
+import os
+import json
+import requests
+
+BASE_URL = os.getenv('LCF_BASE_URL', 'https://automation-library.ibm.com')
+API_KEY = os.getenv('LCF_API_KEY', '')
+
+def {{.Op.Name}}({{range $i, $p := .Op.Parameters}}{{if $i}}, {{end}}{{$p.Name}}: {{$p.Type}}{{end}}) -> dict:
+    """{{.Op.Description}}"""
+    url = f"{BASE_URL}/integrations/{{ .Def.Name }}/{{ .Op.Name }}"
+    headers = {
+        'Authorization': f'Bearer {API_KEY}',
+        'Content-Type': 'application/json',
+    }
+    payload = {
+        {{- range $p := .Op.Parameters }}
+        "{{ $p.Name }}": {{ $p.Name }},
+        {{- end }}
+    }
+    r = requests.post(url, headers=headers, json=payload)
+    r.raise_for_status()
+    return r.json()
+

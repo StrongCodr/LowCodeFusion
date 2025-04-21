@@ -1,0 +1,11 @@
+i# Binaries for programs and plugins
+bin/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# IDE/editor configs
+.idea/
+.vscode/
+
