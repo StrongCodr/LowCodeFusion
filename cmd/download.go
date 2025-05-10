@@ -75,7 +75,8 @@ func init() {
 	down.Flags().StringVarP(&integration, "integration", "i", "", "Integration name (e.g. AWS)")
 	down.Flags().StringVarP(&lang, "lang", "l", "python", "Target language (python)")
 	down.Flags().StringVarP(&outDir, "out", "o", ".", "Output directory")
-	down.Flags().Bool("download-only", false, "Only download the zip file and print its path")
+	down.Flags().BoolP("download-only", "d", false, "Only download the zip file and print its path")
 	down.MarkFlagRequired("integration")
+	down.MarkFlagRequired("out")
 	rootCmd.AddCommand(down)
 }
