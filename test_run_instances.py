@@ -2,16 +2,19 @@
 """
 Simple test script for the RunInstances EC2 function.
 """
-# Standard library imports
-from typing import Any, Dict
-import sys
 import os
+import sys
+from test.AWS._types.ec2.RunInstances_types import (GroupIdentifier,
+                                                    RunInstances_body_Type,
+                                                    RunInstances_Result_Type)
+# Import the RunInstances function from the test.AWS.AWS.ec2 module
+from test.AWS.ec2.RunInstances import RunInstances
+#  Standard library imports
+from typing import Any, Dict
 
 # Add the test directory to Python path to enable imports
 sys.path.append(os.path.abspath("test"))
 
-# Import the RunInstances function from the test.AWS.AWS.ec2 module
-from AWS.AWS.ec2.RunInstances import RunInstances
 # Import types - these will be available after running the generator
 # For now, we'll just use Dict[str, Any] for typing
 # from AWS.AWS.ec2.types import RunInstances_body_Type, RunInstances_Result_Type

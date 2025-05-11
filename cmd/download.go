@@ -3,7 +3,6 @@ package cmd
 import (
 	"fmt"
 	"os"
-	"path/filepath"
 
 	"github.com/spf13/cobra"
 
@@ -60,13 +59,10 @@ func init() {
 				return err
 			}
 
-			// prepare final output directory
-			finalOutDir := filepath.Join(outDir, integration)
-
 			// generate stubs
 			switch lang {
 			case "python":
-				return python.GenerateStubs(def, tmpDir, finalOutDir)
+				return python.GenerateStubs(def, tmpDir, outDir)
 			default:
 				return fmt.Errorf("unsupported language: %s", lang)
 			}
